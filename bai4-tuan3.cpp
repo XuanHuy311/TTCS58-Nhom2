@@ -5,11 +5,11 @@ using namespace std;
 
 // Cau truc de luu canh do thi
 // u, v la 2 dinh, w la trong so canh
-struct dothi {
+struct CANH {
     int u, v, w;
 };
-// Ham so sanh der dung trong ham sort o duoi
-bool cmp(const dothi &a, const dothi &b) {
+// Ham so sanh de dung trong ham sort o duoi
+bool cmp(const CANH &a, const CANH &b) {
     return a.w < b.w;
 }
 #define N 10005
@@ -41,11 +41,11 @@ int main() {
     int n, m; cin >> n >> m;
 
     // Nhap danh sách các canh
-    vector<dothi> dthi(m);
-    for (dothi &e: dthi) cin >> e.u >> e.v >> e.w;
+    vector<CANH> canh(m);
+    for (CANH &e: canh) cin >> e.u >> e.v >> e.w;
 
     // Sap xep lai các canh theo trong so tang dan
-    sort(dthi.begin(), dthi.end(), cmp);
+    sort(canh.begin(), canh.end(), cmp);
 
     // Khoi tao cau truc Disjoint Set
     for (int i=1; i<=n; i++) {
@@ -57,7 +57,7 @@ int main() {
     int mst_weight = 0;
 
     // Duyet qua các canh theo thu tu dd sap xep
-    for (dothi &e: dthi) {
+    for (CANH &e: canh) {
         // Thu hop nhat 2 cây chua u và v
         if (join(e.u, e.v)) {
             // Hop nhat thành công, ta thêm e và ket qua
